@@ -6,8 +6,8 @@ function App() {
  
   return (
    <main >
-     <Canvas />
      <Home />
+     <Canvas />
      <Customizer />
    </main>
   )
