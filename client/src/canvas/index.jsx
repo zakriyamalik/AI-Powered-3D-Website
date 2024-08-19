@@ -8,7 +8,7 @@ import CameraRig from './CameraRig'
 
 const CanvasModel = () => {
   return (
-    <Canvas >
+    <Canvas style={{ width: '90vw', height: '60vh', marginTop: '10px' }}>
         <ambientLight intensity={0.5} />
         <Environment preset="city" />        
         <CameraRig>
