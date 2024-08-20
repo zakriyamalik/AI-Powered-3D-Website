@@ -1,11 +1,11 @@
 import React from 'react'
 
-const colorPicker = () => {
+const ColorPicker = () => {
   return (
     <div>
-      
+      cooler
     </div>
   )
 }
 
-export default colorPicker
+export default ColorPicker

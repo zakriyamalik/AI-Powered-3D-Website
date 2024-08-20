@@ -26,9 +26,7 @@ const Shirt = () => {
   // Use frame loop to smoothly interpolate the shirt color to the current state color
   useFrame((state, delta) => {
     // Debugging log for color values
-    console.log('Color:', materials.lambert1.color);
-    console.log('Target Color:', snap.color);
-
+    
     // Easing function to smoothly transition shirt color
     easing.dampC(materials.lambert1.color, snap.color, 0.25, delta);
   });
