@@ -33,7 +33,7 @@ router.route('/').post(async(req,res)=>{
 
 
        }
-       catch{
+       catch(error){
         console.error(error);
         res.statusMessage(500).json({message:"SOmething went wrong"})
        }
