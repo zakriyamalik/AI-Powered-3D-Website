@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { AnimatePresence,motion } from 'framer-motion';
 import {useSnapshot} from 'valtio'
-
 import config from '../config/config';
 import state from '../store';
 import {download, logoShirt } from '../assets';
@@ -27,9 +26,12 @@ const Customizer = () => {
         switch(activeEditorialTab)
         {
             case "aipicker":
-                return <AIPicker />
-             
-           
+                return <AIPicker 
+                prompt={prompt}
+                setPrompt={setPrompt}
+                generatingImg={generateImg}
+                handleSubmit={handleSubmit}
+                />
             case "colorpicker":
                 return <ColorPicker/>
             case "filepicker":
@@ -43,6 +45,25 @@ const Customizer = () => {
             return null;
         }
 
+    }
+
+    const handleSubmit = async(type)=>{
+        if(!prompt)
+        {
+            return alert("Please enter a prompt");
+
+        }
+        try{
+
+        }
+        catch(error)
+        {
+            alert(error)
+        }
+        finally{
+            setGeneratingImg(false);
+            setActiveEditorTab("");
+        }
     }
     const handleDecal = (type,result)=>{
         const decalType=DecalTypes[type];
@@ -63,12 +84,19 @@ const Customizer = () => {
             state.isLogoTexture=true;
             state.isFullTexture=false;
     }
+    setActiveFilterTab((prevState)=>{
+        return{...prevState,
+            [tabName]:!prevState[tabName],
+            }
+        
+    })
+}
    
     const readFile=(type)=>{
         reader(file)
         .then((result)=>{
             handleDecal(type,result)
-            setActiveEditorialTab("");
+          //  setActiveEditorTab("");
         })
     }
   return (
@@ -111,8 +139,8 @@ const Customizer = () => {
             key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTab=""
-            handleClick={()=>{}} />
+                isActiveTab={activeFilterTab[tab.name]}
+            handleClick={()=>handleActiveFilterTab(tab.name)} />
             ))}
                    
             </motion.div>
@@ -123,6 +151,7 @@ const Customizer = () => {
    </AnimatePresence>
   )
 }
-}
+
+
 
 export default Customizer;
