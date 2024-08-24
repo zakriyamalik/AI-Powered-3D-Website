@@ -20,7 +20,7 @@ const config = {
 const openai = new OpenAI(config);
 
 router.route('/').get((req, res) => {
-    res.status(200).json({ message: "Hello from DALL.E ROUTES" });
+    res.status(200).json({ message: "Hellooo from DALL.E ROUTES" });
 });
 
 router.route('/').post(async (req, res) => {
@@ -28,7 +28,7 @@ router.route('/').post(async (req, res) => {
         const { prompt } = req.body;
 
         if (!prompt) {
-            return res.status(400).json({ message: "Prompt is required" });
+            return res.status(400).json({ message: "Prompttt is required" });
         }
 
         const response = await openai.images.generate({
@@ -42,7 +42,7 @@ router.route('/').post(async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Something went wrong" });
+        res.status(500).json({ message: "Something went wroooong" });
     }
 });
 
